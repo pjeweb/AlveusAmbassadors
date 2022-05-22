@@ -1,7 +1,7 @@
-import React from 'react'
+import styles from './searchBar.module.css'
 
 export default function searchBar() {
   return (
-      <input type="search" name="search" id="" placeholder="find an ambassador"/>
+      <input type="search" name="search" id={styles.search} placeholder="find an ambassador"/>
   )
 }

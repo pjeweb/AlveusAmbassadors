@@ -1,3 +1,10 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
 .animals{
     display: grid;
     grid-template-columns: 1fr 1fr;

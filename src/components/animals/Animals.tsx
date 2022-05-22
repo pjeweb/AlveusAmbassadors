@@ -1,6 +1,7 @@
 //components
 import AnimalPreview from "../animalPreview/AnimalPreview";
 import AnimalExpanded from "../animalExpanded/AnimalExpanded";
+import SearchBar from "../searchBar/searchBar";
 
 //css
 import styles from './animals.module.css'
@@ -20,32 +21,35 @@ export default function Animals() {
   }
 
   return (
-    <main className={styles.animals}>
-      {animals && animals.map(animal => (
-        <>
-          {expandedAnimal === animal.name ? 
-            <AnimalExpanded
+    <main>
+      <SearchBar />
+      <div className={styles.animals}>
+        {animals && animals.map(animal => (
+          <>
+            {expandedAnimal === animal.name ? 
+              <AnimalExpanded
+                name={animal.name}
+                animalType={animal.animalType}
+                imgSrc={animal.imgSrc}
+                imgAltText={animal.imgAltText}
+                expandedInfo={animal.expandedInfo}
+
+                close={handleClose}
+              />
+              : null
+            }
+            <AnimalPreview 
+              key={animal.name} // every animal will have a unique name
               name={animal.name}
               animalType={animal.animalType}
-              imgSrc={animal.imgSrc}
-              imgAltText={animal.imgAltText}
-              expandedInfo={animal.expandedInfo}
+              imgSrc={animal.imgSrc}  
+              imgAltText={animal.imgAltText} 
 
-              close={handleClose}
+              expand={()=>handleExpand(animal.name)}
             />
-            : null
-          }
-          <AnimalPreview 
-            key={animal.name} // every animal will have a unique name
-            name={animal.name}
-            animalType={animal.animalType}
-            imgSrc={animal.imgSrc}  
-            imgAltText={animal.imgAltText} 
-
-            expand={()=>handleExpand(animal.name)}
-          />
-        </>
-      ))}
+          </>
+        ))}
+      </div>
     </main>
   )
 }
